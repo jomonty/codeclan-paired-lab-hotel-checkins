@@ -23,17 +23,25 @@ function App() {
     setBookings(newBookings)
   }
 
-  const removeBooking = (index) => {
+  const removeBooking = (id) => {
     const newBookings = [...bookings]
-    const indexToDel = newBookings.map(s => s._id ).indexOf(index)
+    const indexToDel = newBookings.map(s => s._id ).indexOf(id)
     newBookings.splice(indexToDel, 1)
     setBookings(newBookings)
   };
 
+  const updateBooking = (booking) => {
+    const newBookings = [...bookings];
+    const indexToUpdate = newBookings.map(b => b._id ).indexOf(booking._id);
+    newBookings[indexToUpdate] = booking;
+    setBookings(newBookings);
+  };
+  
+
   return (
     <>
       <BookingForm addBooking={addBooking} />
-      <BookingList bookings={bookings} removeBooking={removeBooking} />
+      <BookingList bookings={bookings} removeBooking={removeBooking} updateBooking={updateBooking}/>
     </>
   );
 }
