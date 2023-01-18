@@ -6,12 +6,18 @@ const BookingForm = ({ addBooking }) => {
     const [formData, setFormData] = useState({
         name: "",
         email: "",
-        checkedIn: false,
+        checked_in: false
     })
 
     const onChange = (e) => {
         const newFormData = Object.assign({}, formData);
         newFormData[e.target.name] = e.target.value;
+        setFormData(newFormData);
+    }
+
+    const onCheckboxChange = (e) => {
+        const newFormData = {...formData};
+        newFormData.checked_in = e.target.checked
         setFormData(newFormData);
     }
 
@@ -52,12 +58,13 @@ const BookingForm = ({ addBooking }) => {
                     required />
             </div>
             <div className="formWrap">
-                <label htmlFor="checkedIn">Checked-In:</label>
+                <label htmlFor="checked_in">Checked-In:</label>
                 <input
+                    onChange={onCheckboxChange}
                     type="checkbox"
-                    id="checkedIn"
-                    name="checkedIn"
-                    value={formData.checkedIn} />
+                    id="checked_in"
+                    name="checked_in"
+                    value={formData.checked_in}/>
             </div>
 
             <input type="submit" value="Save" id="save" />
