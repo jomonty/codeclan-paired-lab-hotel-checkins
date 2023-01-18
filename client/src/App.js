@@ -1,24 +1,39 @@
-import logo from './logo.svg';
+
+import { useState, useEffect } from "react";
+
 import './App.css';
 
+import BookingForm from "./BookingForm";
+import BookingList from "./BookingList";
+import { getBookings } from "./BookingService";
+
 function App() {
+
+  const [bookings, setBookings] = useState([]);
+
+  useEffect(() => {
+    getBookings().then((allBookings) => {
+      setBookings(allBookings);
+    })
+
+  }, [])
+
+  const addBooking = (booking) => {
+    const newBookings = [...bookings, booking]
+    setBookings(newBookings)
+  }
+
+  const removeBooking = (index) => {
+    const newBookings = [...bookings]
+    newBookings.splice(index, 1)
+    setBookings(newBookings)
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BookingForm addBooking={addBooking} />
+      <BookingList bookings={bookings} removeBooking={removeBooking} />
+    </>
   );
 }
 
