@@ -70,7 +70,12 @@ const createRouter = function (collection) {
         { $set: bookingToUpdate }
       )
       .then(dbRes => {
-        res.json(dbRes);
+        // const newId = ObjectId(dbRes.insertedId);
+        collection
+          .findOne({ _id: ObjectId(idToUpdate) })
+          .then(updatedBooking => {
+            res.json(updatedBooking);
+          });
       })
       .catch(error => {
         console.error(error);
