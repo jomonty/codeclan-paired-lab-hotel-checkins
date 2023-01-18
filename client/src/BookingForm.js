@@ -10,7 +10,7 @@ const BookingForm = ({ addBooking }) => {
     })
 
     const onChange = (e) => {
-        const newFormData = Object.assign({}, formData);
+        const newFormData = {...formData};
         newFormData[e.target.name] = e.target.value;
         setFormData(newFormData);
     }
@@ -30,7 +30,7 @@ const BookingForm = ({ addBooking }) => {
         setFormData({
             name: "",
             email: "",
-            checkedIn: false,
+            checked_in: false
         });
     }
 
