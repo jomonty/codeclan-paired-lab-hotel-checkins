@@ -38,7 +38,8 @@ const BookingForm = ({ addBooking }) => {
                     type="text"
                     id="name"
                     name="name"
-                    value={formData.name} />
+                    value={formData.name}
+                    required />
             </div>
             <div className="formWrap">
                 <label htmlFor="email">Email:</label>
@@ -47,7 +48,8 @@ const BookingForm = ({ addBooking }) => {
                     type="text"
                     id="email"
                     name="email"
-                    value={formData.email} />
+                    value={formData.email}
+                    required />
             </div>
             <div className="formWrap">
                 <label htmlFor="checkedIn">Checked-In:</label>
