@@ -25,7 +25,8 @@ function App() {
 
   const removeBooking = (index) => {
     const newBookings = [...bookings]
-    newBookings.splice(index, 1)
+    const indexToDel = newBookings.map(s => s._id ).indexOf(index)
+    newBookings.splice(indexToDel, 1)
     setBookings(newBookings)
   };
 
