@@ -8,12 +8,12 @@ const BookingCard = ({booking, removeBooking}) => {
           removeBooking(booking._id)
       })
   };
-  
+
   return (
     <>
     <p>Customer name: {booking.name}</p>
     <p>Customer email: {booking.email}</p>
-    <p>Checked in? {booking.checkedIn}</p>
+    <p>Checked in? {booking.checked_in ? 'true' : 'false'}</p>
     <button onClick={() => handleDelete()}> 🗑 </button>
     <hr />
     </>
